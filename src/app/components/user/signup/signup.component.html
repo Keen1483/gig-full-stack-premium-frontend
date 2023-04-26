@@ -1,0 +1,77 @@
+<div class="signup">
+    <div class="intro">
+        <h2 class="mat-display-2">Get discounts on your next orders</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="form">
+        <mat-card>
+            <mat-card-header>
+                <button mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">save_as</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">
+                    <span>Sign Up today</span>
+                    <span hidden>Create new user</span>
+                </mat-card-title>
+                <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email">
+                            <mat-hint align="end">Accept only valid email</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Name (Optional)</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-hint align="end">Min 3 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Username (Optional)</mat-label>
+                            <input matInput formControlName="username">
+                            <mat-hint align="end">Min 3 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password">
+                            <mat-hint align="end">Min 4 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Confirm your password</mat-label>
+                            <input type="password" matInput [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}">
+                            <mat-hint align="end" *ngIf="userForm.value['password'] === confirmPassword">
+                                Correct
+                                <mat-icon>check_circle</mat-icon>
+                            </mat-hint>
+                            <mat-hint align="end" *ngIf="userForm.value['password'] && confirmPassword && userForm.value['password'] !== confirmPassword">
+                                Incorrect
+                                <mat-icon>cancel</mat-icon>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            matTooltip="Save new user"
+                            matTooltipShowDelay="500"
+                            matTooltipHideDelay="1000"
+                            color="primary"
+                            [disabled]="userForm.invalid || (userForm.value['password'] !== confirmPassword)">
+                            Register
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

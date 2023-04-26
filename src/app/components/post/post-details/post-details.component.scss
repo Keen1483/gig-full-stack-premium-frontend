@@ -1,0 +1,76 @@
+@use '../../../../sass/custom' as *;
+@use '../../../../sass/components/buttons' as *;
+@use '../../../../sass/components/typography' as *;
+
+.post-details {
+
+    .intro, .details {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    .intro {
+        color: $white;
+    }
+
+    .details {
+        background: $white;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        span {
+            font-weight: 500;
+        }
+    }
+}
+
+.post {
+    p {
+        margin-top: 1.5rem;
+    }
+
+    .image {
+        text-align: center;
+
+        img {
+            width: 100%;
+        }
+    }
+
+}
+.dates {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-style: italic;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+
+    div:last-child {
+        margin-left: 0.4rem;
+    }
+}
+
+mat-card {
+    padding-bottom: 2rem;
+}
+
+.comments {
+    margin-top: 1.5rem;
+
+    mat-card {
+        margin-top: 1rem;
+        border: 1px solid #f3e6e6;
+        //border-radius: 3rem;
+
+        mat-card-actions {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 400;
+            font-style: italic;
+        }
+    }
+}

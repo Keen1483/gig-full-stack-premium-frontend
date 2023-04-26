@@ -1,0 +1,18 @@
+<div class="comment">
+    <form [formGroup]="commentForm" (ngSubmit)="submitForm()">
+        <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <input autofocus matInput formControlName="content" placeholder="Write your comment here">
+        </mat-form-field>
+        <div>
+            <button
+                mat-button
+                matTooltip="Save your comment"
+                matTooltipShowDelay="500"
+                matTooltipHideDelay="1000"
+                [disabled]="commentForm.invalid">
+                <mat-icon color="primary">send</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>

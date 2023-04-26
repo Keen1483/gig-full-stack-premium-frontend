@@ -1,0 +1,56 @@
+@use '../../../../sass/custom' as *;
+@use '../../../../sass/components/mixins' as *;
+
+.user-list {
+
+    .intro, .list {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    .intro {
+        color: $white;
+    }
+
+    .list {
+        background: $white;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .progress-spinner {
+        @include absoluteCenter;
+    }
+
+    ::ng-deep.mat-focused .mat-form-field-label {
+        /*change color of label*/
+        //color: $blue !important;
+    }
+
+    ::ng-deep.mat-form-field-underline {
+        /*change color of underline*/
+        //background-color: $blue !important;
+    }
+
+    ::ng-deep.mat-form-field-ripple {
+        /*change color of underline when focused*/
+        //background-color: $blue !important;
+    }
+}
+
+table {
+    width: 100%;
+    background: transparent;
+
+    tr td:not(:first-child) {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+        color: $black;
+    }
+}
+
+mat-icon {
+    opacity: 0.5;
+}

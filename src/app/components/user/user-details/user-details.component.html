@@ -1,0 +1,41 @@
+<div class="user-details">
+    <div class="intro">
+        <h2 class="mat-display-2">User Details</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="details">
+        <mat-card *ngIf="user !== undefined">
+            <mat-card-header>
+                <div mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">manage_accounts</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">{{ user.username }}</mat-card-title>
+                <div>
+                    <p><span>ID</span>: {{ user.id }}</p>
+                    <p><span>Email</span>: {{ user.email }}</p>
+                    <p><span>Username</span>: {{ user.username }}</p>
+                    <p *ngIf="user.name"><span>Name</span>: {{ user.name }}</p>
+                    <p *ngIf="user.roles?.length !== 0">
+                        <span>Roles</span>: 
+                        <mat-list *ngFor="let role of user.roles">
+                            <mat-list-item>{{ role.name }}</mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </p>
+                    <p><span>Register at</span>: {{ user.createdAt | date: 'MM/dd/yyyy' }}</p>
+                    <p *ngIf="user.editedAt"><span>Edited at</span>: {{ user.createdAt | date: 'MM/dd/yyyy' }}</p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" routerLink="edit">
+                    Edit
+                </button>
+                <button mat-raised-button color="accent" (click)="additionalMethods.openDeletionConfirm(user.username || '', 'User')">
+                    Delete
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

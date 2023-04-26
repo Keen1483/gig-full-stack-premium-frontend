@@ -1,0 +1,98 @@
+<div class="user-edit">
+    <div class="intro">
+        <h2 class="mat-display-2">Get discounts on your next orders</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="form">
+        <mat-card>
+            <mat-card-header>
+                <button mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">save_as</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">Edit user</mat-card-title>
+                <div *ngIf="!resetPassword" class="reset-password">
+                    <button type="button" mat-raised-button (click)="resetPassword=!resetPassword">Reset password</button>
+                </div>
+                <form *ngIf="user !== undefined" [formGroup]="editUserForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email">
+                            <mat-hint align="end">Accept only valid email</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-hint align="end">Min 3 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Username (Optional)</mat-label>
+                            <input matInput formControlName="username">
+                            <mat-hint align="end">Min 3 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="resetPassword" class="reset-password">
+                        <div class="old-password">
+                            <mat-form-field>
+                                <mat-label>Old password</mat-label>
+                                <input type="password" matInput [(ngModel)]="oldPassword" [ngModelOptions]="{standalone: true}">
+                                <mat-hint align="end" *ngIf="errorPassword !== undefined">{{errorPassword}}</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>New password</mat-label>
+                                <input type="password" matInput formControlName="password">
+                                <mat-hint align="end">Min 4 characters</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Confirm your new password</mat-label>
+                                <input type="password" matInput [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}">
+                                <mat-hint align="end" *ngIf="editUserForm.value['password'] === confirmPassword" class="hint-confirm">
+                                    Correct
+                                    <mat-icon>check_circle</mat-icon>
+                                </mat-hint>
+                                <mat-hint align="end" *ngIf="editUserForm.value['password'] && confirmPassword && editUserForm.value['password'] !== confirmPassword">
+                                    Incorrect
+                                    <mat-icon>cancel</mat-icon>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <mat-label>Roles</mat-label>
+                        <mat-select multiple [formControl]="rolesControl">
+                            <mat-option *ngFor="let role of allRoles" [value]="role.name">
+                                {{ role.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            matTooltip="Save new informations"
+                            matTooltipShowDelay="500"
+                            matTooltipHideDelay="1000"
+                            color="primary"
+                            [disabled]="editUserForm.invalid || (editUserForm.value['password'] !== '' && editUserForm.value['password'] !== confirmPassword) || (confirmPassword && oldPassword.length < 4)">
+                            Save changes
+                        </button>
+                    </mat-card-actions>
+                    
+                </form>
+                <span *ngIf="errorMessage !== undefined" class="mat-caption">{{ errorMessage }}</span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

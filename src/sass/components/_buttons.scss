@@ -1,0 +1,17 @@
+@use '../custom' as *;
+
+.btn {
+    height: 1.8rem !important;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-outline {
+    background: transparent;
+}
+
+.btn-rounded {
+    border-radius: $border-radius-size;
+}

@@ -1,0 +1,32 @@
+<div class="role-details">
+    <div class="intro">
+        <h2 class="mat-display-2">Role Details</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="details">
+        <mat-card *ngIf="role !== undefined">
+            <mat-card-header>
+                <div mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">details</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">{{ role.name }}</mat-card-title>
+                <div>
+                    <p><span>ID</span>: {{ role.id }}</p>
+                    <p><span>Name</span>: {{ role.name }}</p>
+                    <p><span>Created at</span>: {{ role.createdAt | date: 'MM/dd/yyyy' }}</p>
+                    <p *ngIf="role.editedAt"><span>Edited at</span>: {{ role.createdAt | date: 'MM/dd/yyyy' }}</p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" routerLink="edit">
+                    Edit
+                </button>
+                <button mat-raised-button color="accent" (click)="additionalMethods.openDeletionConfirm(role.name || '', 'Role')">
+                    Delete
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

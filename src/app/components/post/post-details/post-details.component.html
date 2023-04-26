@@ -1,0 +1,54 @@
+<div class="post-details">
+    <div class="intro">
+        <h2 class="mat-display-2">Post Details</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="details" *ngIf="post !== undefined">
+        <mat-card>
+            <mat-card-header>
+                <div mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">article</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">{{ post.title }}</mat-card-title>
+                <div class="post">
+                    <div class="dates">
+                        <div class="content"><span>Author</span>: {{ post.author.username }}</div>
+                        <div><span>Created at</span>: {{ post.createdAt | date: 'MM/dd/yyyy HH:mm' }}</div>
+                    </div>
+                    <p class="image"><img src="{{post.imageUrl}}" alt=""></p>
+                    <p class="content">{{ post.content }}</p>
+                    <p *ngIf="post.editedAt"><span>Edited at</span>: {{ post.createdAt | date: 'MM/dd/yyyy' }}</p>
+                </div>
+                
+            </mat-card-content>
+            <mat-card-actions>
+                <div *ngIf="isAuthor()">
+                    <button mat-raised-button color="primary" routerLink="edit" class="btn btn-rounded">
+                        Edit
+                    </button>
+                </div>
+                <div *ngIf="isAdmin()">
+                    <button mat-raised-button color="accent" (click)="additionalMethods.openDeletionConfirm(post.title || '', 'Post')" class="btn btn-rounded">
+                        Delete
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+
+        <!-- Add new comment -->
+        <app-comment-create [post]="post"></app-comment-create>
+
+        <div class="comments">
+            <mat-icon color="primary">chat</mat-icon><br> Comments
+            <mat-card *ngFor="let comment of comments">
+                <mat-card-content>{{comment.content}}</mat-card-content>
+                <mat-card-actions>
+                    <div>{{comment.author.username}}</div>
+                    <div>{{comment.createdAt | date: 'MM/dd/yyyy HH:mm'}}</div>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

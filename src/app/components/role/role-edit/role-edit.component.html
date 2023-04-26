@@ -1,0 +1,41 @@
+<div class="role-edit">
+    <div class="intro">
+        <h2 class="mat-display-2">Get discounts on your next orders</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="form">
+        <mat-card>
+            <mat-card-header>
+                <button mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">save_as</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">Edit role</mat-card-title>
+                <form *ngIf="role !== undefined" [formGroup]="editRoleForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" placeholder="USER, ADMIN2, MANAGER7">
+                            <mat-hint align="end">Only uppercase, Not contains ROLE or ROLE_</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            matTooltip="Save modifications"
+                            matTooltipShowDelay="500"
+                            matTooltipHideDelay="1000"
+                            color="primary"
+                            [disabled]="editRoleForm.invalid">
+                            Save changes
+                        </button>
+                    </mat-card-actions>
+                    
+                </form>
+                <span *ngIf="errorMessage !== undefined" class="mat-caption">{{ errorMessage }}</span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

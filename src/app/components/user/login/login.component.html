@@ -1,0 +1,51 @@
+<div class="login">
+    <div class="intro">
+        <h2 class="mat-display-2">Get discounts on your next orders</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="form">
+        <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+                <div mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">login</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">Fill this form to sign in</mat-card-title>
+                <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Username</mat-label>
+                            <input matInput formControlName="username">
+                            <mat-hint align="end">Min 3 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password">
+                            <mat-hint align="end">Min 4 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            matTooltip="Sumit your informations"
+                            matTooltipShowDelay="500"
+                            matTooltipHideDelay="1000"
+                            color="primary"
+                            [disabled]="loginForm.invalid"
+                            class="btn btn-rounded btn-light">
+                            Sumit
+                        </button>
+                    </mat-card-actions>
+                </form>
+                <span *ngIf="errorMessage !== undefined" class="mat-caption">{{ errorMessage }}</span>
+            </mat-card-content>
+            <mat-card-actions>
+                <span>Don't have account? <a routerLink="/signup">Sign up</a></span>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

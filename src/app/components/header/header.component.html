@@ -1,0 +1,52 @@
+<mat-toolbar class="user-nav">
+    <button mat-icon-button (click)="navOpen()" class="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer1"></span>
+    <span class="brand" routerLink="/">
+        BRAND
+    </span>
+    <span class="spacer2"></span>
+    <ul class="nav">
+        <li>
+            <a mat-button routerLink="/home">Home</a>
+        </li>
+        <li>
+            <a mat-button routerLink="/posts-public">Articles</a>
+        </li>
+        <li>
+            <a mat-button>Features</a>
+        </li>
+        <li>
+            <a mat-button>Pricing</a>
+        </li>
+        <li>
+            <a mat-button>FAQ</a>
+        </li>
+    </ul>
+    <span class="spacer3"></span>
+    <button mat-flat-button class="btn" routerLink="/login" *ngIf="!authService.isAuthenticated()">
+        Login
+    </button>
+    <button mat-flat-button class="btn" *ngIf="authService.isAuthenticated()" ng (click)="authService.logout()">
+        Logout
+    </button>
+</mat-toolbar>
+<div *ngIf="isAdmin()">
+    <mat-toolbar class="admin-nav">
+        <ul class="nav">
+            <li>
+                <a mat-button routerLink="/users">Users</a>
+            </li>
+            <li>
+                <a mat-button routerLink="/roles">Roles</a>
+            </li>
+            <li>
+                <a mat-button routerLink="/posts">Articles</a>
+            </li>
+            <li>
+                <a mat-button>Comments</a>
+            </li>
+        </ul>
+    </mat-toolbar>
+</div>

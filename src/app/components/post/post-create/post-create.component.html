@@ -1,0 +1,55 @@
+<div class="create-post">
+    <div class="intro">
+        <h2 class="mat-display-2">Get discounts on your next orders</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat repudiandae, quis aspernatur voluptatibus deleniti eveniet voluptatem, nihil odio alias neque beatae quae. Nihil esse, rerum accusamus eveniet praesentium eos vel libero iste, nemo dolorem odit hic ipsa obcaecati quod, aliquam optio animi ut atque error placeat quam? Harum, corporis!</p>
+    </div>
+    <div class="form">
+        <mat-card>
+            <mat-card-header>
+                <button mat-icon-button mat-card-avatar>
+                    <mat-icon color="primary">save_as</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">
+                    <span>Create new post</span>
+                </mat-card-title>
+                <form [formGroup]="postForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title" placeholder="Your title here">
+                            <mat-hint align="end">Min 8 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Content</mat-label>
+                            <textarea matInput formControlName="content" cols="30" rows="10"></textarea>
+                            <mat-hint align="end">Min 20 characters</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>URL Image</mat-label>
+                            <input type="url" matInput formControlName="imageUrl" placeholder="Your URL image here">
+                            <mat-hint align="end">Only accept valid URL image PNG/JPG/JPEG</mat-hint>
+                        </mat-form-field>
+                    </div>
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            matTooltip="Save new post"
+                            matTooltipShowDelay="500"
+                            matTooltipHideDelay="1000"
+                            color="primary"
+                            [disabled]="postForm.invalid">
+                            Save
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

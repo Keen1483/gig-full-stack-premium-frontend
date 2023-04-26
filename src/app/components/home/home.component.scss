@@ -1,0 +1,73 @@
+@use '../../../sass/custom' as *;
+@use '../../../sass/components/buttons' as *;
+
+.content {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: $white;
+    @media (max-width: 992px) {
+        display: block;
+    }
+
+    .left {
+        width: 49%;
+        @media (max-width: 992px) {
+            width: 100%;
+        }
+    }
+    .right {
+        width: 49%;
+        text-align: right;
+
+        img {
+            width: 100%;
+            margin: auto;
+        }
+
+        @media (max-width: 992px) {
+            width: 100%;
+        }
+    }
+
+    p {
+        padding: 24px 0;
+    }
+
+    .buttons {
+        padding-top: 32px;
+        padding-bottom: 1rem;
+        display: flex;
+
+        .store {
+            width: 100px !important;
+            margin-right: 0.3rem;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.grid {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    background: $white;
+    padding-bottom: 3rem;
+
+    mat-grid-tile {
+        padding-bottom: 1rem;
+    }
+
+    .btn {
+        height: 2rem !important;
+        background: transparent;
+        border: 1px solid $blue;
+        color: $blue;
+        border-radius: $border-radius-size;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
+    }
+}

@@ -1,0 +1,31 @@
+@use '../custom' as *;
+
+ul.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+        list-style-type: none;
+        
+        a {
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+    }
+}
+
+.form {
+    padding-bottom: 2rem;
+    div {
+        margin-bottom: 1.5rem;
+    }
+
+    form {
+        margin-top: 2rem;
+    }
+    
+    mat-form-field {
+        width: 80%;
+    }
+}

@@ -1,0 +1,14 @@
+<div class="confirm-deletion">
+    <div mat-dialog-title>Confirm Deletion</div>
+    <div mat-dialog-content class="message">
+        {{ confirmationMessage }} <span class="data">{{ data.data }}</span>?
+    </div>
+    <div mat-dialog-actions class="actions">
+        <button mat-raised-button color="primary" (click)="dialogRef.close(true)">
+            Confirm
+        </button>
+        <button mat-raised-button color="accent" (click)="dialogRef.close(false)">
+            Cancel
+        </button>
+    </div>
+</div>
